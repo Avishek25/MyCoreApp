@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(document).ready(function () {      
+        $(':input[type="submit"]').prop('disabled', true);  
+
+
+        $("#btnSubmit").click(function () {
+            var str = $('#txtbox').val();
+            alert(str);
+
+
+        }); 
+
+    });
+    function textcange(txt) {
+        var at = txt.value;
+        $(':input[type="submit"]').prop('disabled', true);
+        var numberRegex = /^[+-]?\d+(\.\d+)?([eE][+-]?\d+)?$/;
+        var str = $('#txtbox').val();
+        if (str === "") {
+            alert('Please enter a value');
+        }
+        if (numberRegex.test(str)) {
+            alert('It is a numeric value');
+        }
+        else {
+            $(':input[type="submit"]').prop('disabled', false);
+        }
+    }
+   
+
+
+</script>
+
+<div class="text-center">
+    <input type="text" id="txtbox" onchange="textcange(this)" />
+    <input type="submit" name="start" id="btnSubmit" value="Start" />
+</div>
